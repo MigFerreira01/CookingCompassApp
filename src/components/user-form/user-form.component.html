@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="saveUser()">
+    <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" />
+        <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">Plaese fill a valid name</div>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" />
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Please fill a valid email.</div>
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password" />
+        <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Please fill out your password</div>
+    </div>
+
+    <div>
+        <label for="isAdmin">Set as Admin:</label>
+        <select id="isAdmin" formControlName="isAdmin">
+            <option [value]="false">No</option>
+            <option [value]="true">Yes</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="isBlocked">Block user:</label>
+        <select id="isBlocked" formControlName="isBlocked">
+            <option [value]="false">No</option>
+            <option [value]="true">Yes</option>
+        </select>
+    </div>
+
+    <button type="submit">Save</button>
+</form>

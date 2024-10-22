@@ -1,0 +1,37 @@
+<div *ngIf="loading" class="text-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <p>Loading users...</p>
+</div>
+
+<div *ngIf="!loading">
+  <div *ngIf="users.length > 0; else noUsers">
+    <table class="table table-bordered table-hover mt-4">
+      <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th>Is Admin</th>
+          <th>Is Blocked</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
+          <td>{{ user.isBlocked ? 'Yes' : 'No' }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="goToUserProfile(user.id)">View Profile</button>
+            <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- If no users are found, display a message -->
+  <ng-template #noUsers>
+    <p class="mt-4 text-center">No users found.</p>
+  </ng-template>
+</div>
