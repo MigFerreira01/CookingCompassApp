@@ -1,44 +1,41 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
-import { UserService } from 'src/services/user-service';
+import { AuthService } from 'src/services/auth-service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
-
 export class UserLoginComponent {
+  loginForm: FormGroup;
+  errorMessage: string | null = null;
 
-    errorMessage: string | null = null;
-
-    constructor(private http: HttpClient, private router: Router) {}
-
-    onSubmit(form: any) {
-         const loginRequest = {
-            email: form.value.email,
-            password: form.value.password,
-         };
-
-
-   this.http.post<any>('https://localhost:5022/login', loginRequest)
-    .subscribe(
-        (response: any) => {
-            console.log('Login successful', response);
-
-            localStorage.setItem('token', response.token);
-
-            this.router.navigate(['/userList']);
-        },
-        (error: any) => {
-            this.errorMessage = error.error;
-            
-            console.error('Login error', error);
-        }
-    );
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
   }
-}   
 
+  onSubmit(): void {
+    if (this.loginForm.invalid) {
+      return;
+    }
 
+    const { email, password } = this.loginForm.value;
+
+    this.authService.login(email, password).subscribe({
+      next: (response) => {
+        // Handle successful login, e.g., store the token, navigate to another route
+        localStorage.setItem('token', response.token); // Store token in local storage
+        this.router.navigate(['/userList']); // Redirect to the dashboard or home page
+      },
+      error: (err) => {
+        this.errorMessage = err.error; // Display error message
+      }
+    });
+  }
+}
