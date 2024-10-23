@@ -1,15 +1,35 @@
-<!-- src/app/components/login/login.component.html -->
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form-container">
-  <h2 class="form-title">Login</h2>
-  <div class ="form-element">
-    <label class= "form-lable" for="email">Email</label>
-    <input class= "form-input" id="email" formControlName="email" />
-  </div>
+<div class="login-container">
+  <h2 class="login-title">User Login</h2>
+  
+  <form (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        class="form-control"
+        placeholder="Enter your email"
+        required
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        class="form-control"
+        placeholder="Enter your password"
+        required
+      />
+    </div>
+    
+    <button type="submit" class="login-button">Login</button>
 
-  <div class ="form-element">
-    <label class= "form-lable" for="password">Password</label>
-    <input class= "form-input" type="password" id="password" formControlName="password" />
-  </div>
-
-  <button class="form-button" type="submit" [disabled]="loginForm.invalid">Login</button>
-</form>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </form>
+</div>

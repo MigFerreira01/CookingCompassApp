@@ -4,13 +4,13 @@ import { UserFormComponent } from 'src/components/user-form/user-form.component'
 import { UserListComponent } from 'src/components/user-list/user-list.component';
 import { UserLoginComponent } from 'src/components/user-login/user-login.component';
 import { UserProfileComponent } from 'src/components/user-profile/user-profile.component';
-import { authGuard } from 'src/services/auth-guard';
+import { AuthGuard } from 'src/services/auth-guard';
 
 const routes: Routes = [
   {path: 'login', component: UserLoginComponent},
-  {path: 'user', component: UserFormComponent},
-  {path: 'userList', component: UserListComponent},
-  {path: 'users/:id', component: UserProfileComponent},
+  {path: 'user', component: UserFormComponent, canActivate: [AuthGuard] },
+  {path: 'userList', component: UserListComponent, canActivate: [AuthGuard] },
+  {path: 'users/:id', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default redirect to login
   { path: '**', redirectTo: '/login' } // Redirect any unknown paths to login
 ];
