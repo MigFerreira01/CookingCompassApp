@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserDTO } from 'src/models/user';
+import { User } from 'src/models/user';
 import { UserService } from 'src/services/user-service';
 
 
@@ -13,7 +13,7 @@ import { UserService } from 'src/services/user-service';
   
 })
 export class UserProfileComponent implements OnInit {
-  user!: UserDTO;
+  user!: User;
   loading: boolean = true;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {}
@@ -34,7 +34,7 @@ export class UserProfileComponent implements OnInit {
   getUserById(userId: number) {
     this.loading = true;
     this.userService.getUserById(userId).subscribe({
-        next: (data: UserDTO) => {
+        next: (data: User) => {
             this.user = data;
             this.loading = false;
         },

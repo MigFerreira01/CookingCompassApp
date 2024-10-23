@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserDTO } from 'src/models/user';
+import { User } from 'src/models/user';
 
 @Injectable({
     providedIn:'root',
@@ -11,17 +11,17 @@ export class UserService {
 
     constructor(private httpClient: HttpClient){}
 
-    getAll(): Observable<UserDTO[]> {
-        return this.httpClient.get<UserDTO[]>(this.apiUrl + '/CookingCompassAPI/User');
+    getAll(): Observable<User[]> {
+        return this.httpClient.get<User[]>(this.apiUrl + '/CookingCompassAPI/User');
     }
 
     getUserById(id: number) {
-        return this.httpClient.get<UserDTO>(this.apiUrl + '/CookingCompassAPI/User/userId/' + id)
+        return this.httpClient.get<User>(this.apiUrl + '/CookingCompassAPI/User/userId/' + id)
     }
 
-    save(userDTO: UserDTO): Observable<UserDTO> {
+    save(userDTO: User): Observable<User> {
 
-        return this.httpClient.post<UserDTO>(this.apiUrl + '/CookingCompassAPI/User', userDTO);
+        return this.httpClient.post<User>(this.apiUrl + '/CookingCompassAPI/User', userDTO);
       }
 
     delete(id: number) {

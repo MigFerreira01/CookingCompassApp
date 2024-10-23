@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserDTO } from 'src/models/user';
+import { User } from 'src/models/user';
 import { UserService } from 'src/services/user-service';
 
 @Component({
@@ -32,11 +32,10 @@ export class UserFormComponent implements OnInit {
     saveUser() {
         if (this.form.valid) {
             
-            const user: UserDTO = {
+            const user: User = {
                 id: 0, 
                 name: this.form.value.name, 
                 email: this.form.value.email, 
-                password: this.form.value.password, 
                 isAdmin: this.form.value.isAdmin === 'true', 
                 isBlocked: this.form.value.isBlocked === 'true', 
                 registrationDate: new Date()

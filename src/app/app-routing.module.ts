@@ -8,9 +8,9 @@ import { authGuard } from 'src/services/auth-guard';
 
 const routes: Routes = [
   {path: 'login', component: UserLoginComponent},
-  {path: 'user', component: UserFormComponent, canActivate: [authGuard]},
-  {path: 'userList', component: UserListComponent, canActivate: [authGuard]},
-  {path: 'users/:id', component: UserProfileComponent, canActivate: [authGuard]},
+  {path: 'user', component: UserFormComponent},
+  {path: 'userList', component: UserListComponent},
+  {path: 'users/:id', component: UserProfileComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default redirect to login
   { path: '**', redirectTo: '/login' } // Redirect any unknown paths to login
 ];

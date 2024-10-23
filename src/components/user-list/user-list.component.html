@@ -1,37 +1,27 @@
-<div *ngIf="loading" class="text-center">
-  <div class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <p>Loading users...</p>
-</div>
+<div class="user-list">
+  <h2>User List</h2>
 
-<div *ngIf="!loading">
-  <div *ngIf="users.length > 0; else noUsers">
-    <table class="table table-bordered table-hover mt-4">
-      <thead class="thead-light">
-        <tr>
-          <th>Name</th>
-          <th>Is Admin</th>
-          <th>Is Blocked</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{ user.name }}</td>
-          <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
-          <td>{{ user.isBlocked ? 'Yes' : 'No' }}</td>
-          <td>
-            <button class="btn btn-primary" (click)="goToUserProfile(user.id)">View Profile</button>
-            <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div *ngIf="loading">Loading users...</div> <!-- Loading indicator -->
 
-  <!-- If no users are found, display a message -->
-  <ng-template #noUsers>
-    <p class="mt-4 text-center">No users found.</p>
-  </ng-template>
+  <table *ngIf="!loading && users.length > 0">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.email }}</td>
+        <td>{{ user.name }}</td>
+        <td>
+          <button (click)="goToUserProfile(user.id)">View Profile</button>
+          <button (click)="deleteUser(user)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && users.length === 0">No users found.</div> <!-- No users message -->
 </div>

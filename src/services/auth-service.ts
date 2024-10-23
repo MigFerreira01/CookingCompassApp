@@ -2,16 +2,33 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+export interface User {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  token: string;
+}
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:5022/api/auth'; // Adjust based on your API URL
+  private apiUrl = 'https://localhost:5022/CookingCompassAPI/User'
 
   constructor(private http: HttpClient) {}
 
+  register(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/register`, user);
+  }
+
+
   login(email: string, password: string): Observable<any> {
-    const body = { email, password };
-    return this.http.post(`${this.baseUrl}/login`, body);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = JSON.stringify({ email, password });
+    return this.http.post<any>(`${this.apiUrl}/login`, body, { headers });
   }
 }
