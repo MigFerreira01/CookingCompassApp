@@ -1,0 +1,146 @@
+<!-- recipe-form.component.html -->
+<form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+    <div>
+      <label for="name">Name:</label>
+      <input 
+        type="text" 
+        id="name" 
+        required 
+        [(ngModel)]="recipe.name" 
+        name="name" 
+        placeholder="Enter recipe name" 
+      />
+    </div>
+  
+    <div>
+      <label for="description">Description:</label>
+      <textarea 
+        id="description" 
+        required 
+        [(ngModel)]="recipe.description" 
+        name="description" 
+        placeholder="Enter recipe description"
+      ></textarea>
+    </div>
+  
+    <div>
+      <label for="user">User:</label>
+      <input 
+        type="text" 
+        id="user" 
+        required 
+        [(ngModel)]="recipe.user" 
+        name="user" 
+        placeholder="Enter your name" 
+      />
+    </div>
+  
+    <div>
+      <label for="category">Category:</label>
+      <select 
+        id="category" 
+        required 
+        [(ngModel)]="recipe.category" 
+        name="category"
+      >
+        <option value="" disabled selected>Select a category</option>
+        <option value="AppetizersandSnacks">Appetizers and Snacks</option>
+        <option value="Soups">Soups</option>
+        <option value="Salads">Salads</option>
+        <option value="MainDishes">Main Dishes</option>
+        <option value="SideDishes">Side Dishes</option>
+        <option value="Desserts">Desserts</option>
+        <option value="Bread">Bread</option>
+        <option value="Sauces">Sauces</option>
+        <option value="Drinks">Drinks</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="difficulty">Difficulty:</label>
+      <select 
+        id="difficulty" 
+        required 
+        [(ngModel)]="recipe.difficulty" 
+        name="difficulty"
+      >
+        <option value="" disabled selected>Select difficulty level</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="status">Status:</label>
+      <select 
+        id="status" 
+        required 
+        [(ngModel)]="recipe.status" 
+        name="status"
+      >
+        <option value="" disabled selected>Select approval status</option>
+        <option value="Pending">Pending</option>
+        <option value="Approved">Approved</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="duration">Duration (in minutes):</label>
+      <input 
+        type="number" 
+        id="duration" 
+        required 
+        [(ngModel)]="recipe.duration" 
+        name="duration" 
+        placeholder="Enter duration in minutes" 
+      />
+    </div>
+  
+    <div>
+      <h3>Ingredients</h3>
+      <div *ngFor="let ingredient of recipe.ingredients; let i = index">
+        <div>
+          <label for="ingredientName{{i}}">Ingredient Name:</label>
+          <input 
+            type="text" 
+            id="ingredientName{{i}}" 
+            required 
+            [(ngModel)]="ingredient.ingredientName" 
+            name="ingredientName{{i}}"
+            placeholder="Enter ingredient name" 
+          />
+        </div>
+  
+        <div>
+          <label for="quantity{{i}}">Quantity:</label>
+          <input 
+            type="number" 
+            id="quantity{{i}}" 
+            required 
+            [(ngModel)]="ingredient.quantity" 
+            name="quantity{{i}}"
+            placeholder="Enter quantity" 
+          />
+        </div>
+  
+        <div>
+          <label for="unit{{i}}">Unit:</label>
+          <input 
+            type="text" 
+            id="unit{{i}}" 
+            required 
+            [(ngModel)]="ingredient.unit" 
+            name="unit{{i}}"
+            placeholder="Enter unit (e.g., grams, cups)" 
+          />
+        </div>
+      </div>
+  
+      <button type="button" (click)="addIngredient()">Add Ingredient</button>
+    </div>
+  
+    <button type="submit">Create Recipe</button>
+  </form>
+  

@@ -1,0 +1,18 @@
+<div class="recipe-list">
+  <h2>Recipe List</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of recipes">
+        <td>{{ recipe.name }}</td>
+        <td>{{ recipe.user }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

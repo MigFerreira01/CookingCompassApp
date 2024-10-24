@@ -9,10 +9,6 @@ export interface User {
   password: string;
 }
 
-export interface LoginResponse {
-  token: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -29,29 +25,49 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { email, password };
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, body, { headers })
+    return this.http.post<{token: string}>(`${this.apiUrl}/login`, body, { headers})
     .pipe(
-      tap((response: LoginResponse)=> {
-        sessionStorage.setItem('jwtToken', response.token);
+      tap((response )=> {
+        localStorage.setItem('jwtToken', response.token);
       }),
-      catchError(this.handleError<LoginResponse>('login'))
+      catchError(this.handleError<string>('login'))
     );
   }
   
   logout(): void {
     // Remove the token on logout
-    localStorage.removeItem('jwtToken');
+    sessionStorage.removeItem('jwtToken');
   }
 
   getToken(): string | null {
-    return sessionStorage.getItem('jwtToken');
+    return localStorage.getItem('jwtToken');
   }
   
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
+      console.error(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
+  }
+
+  getCurrentUser(): {email: string | null; isAdmin : boolean} {
+    const token = this.getToken();
+    if (!token) {
+      return { email: null, isAdmin: false };
+    }
+
+    const payload = this.parseJwt(token);
+    return {
+      email: payload?.email || null,
+      isAdmin: payload?.IsAdmin || false,
+    }
+  }
+
+  private parseJwt(token: string): any {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(escape(window.atob(base64)));
+    return JSON.parse(jsonPayload);
   }
 
   getProtectedData(): Observable<any> {

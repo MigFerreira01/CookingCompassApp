@@ -1,0 +1,97 @@
+/* recipe-create.component.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Form Container */
+form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Form Title */
+h3 {
+    text-align: center;
+    color: #333;
+}
+
+/* Input Fields */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Textarea Specific Styles */
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Button Styles */
+button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Full-width buttons */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Ingredient Section */
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Additional Ingredient Styles */
+div > div {
+    margin-bottom: 15px; /* Spacing between ingredient fields */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    /* Adjust form max-width on small screens */
+    form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        font-size: 14px;
+    }
+}

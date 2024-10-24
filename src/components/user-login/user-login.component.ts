@@ -10,17 +10,32 @@ import { AuthService } from 'src/services/auth-service';
   styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent {
-  email: string = '';
-  password: string = '';
+  loginForm: FormGroup;
   errorMessage: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
 
   onLogin() {
-    this.authService.login(this.email, this.password).subscribe({
+    if (this.loginForm.invalid) {
+      this.errorMessage = 'Please fill in the form correctly.';
+      return;
+    }
+
+    const { email, password } = this.loginForm.value;
+
+    this.authService.login(email, password).subscribe({
       next: (response) => {
         console.log('Login successful!', response);
-        // Handle successful login (e.g., redirect to dashboard)
+        this.router.navigate(['/user']);
       },
       error: (err) => {
         this.errorMessage = 'Login failed. Please check your credentials.';

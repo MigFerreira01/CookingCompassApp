@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { User } from 'src/models/user';
 import { AuthService } from './auth-service';
+import { Recipe } from 'src/models/recipe';
 
 @Injectable({
     providedIn:'root',
 })
-export class UserService {
-    apiUrl = 'https://localhost:5022/CookingCompassAPI/User'
+export class RecipeService {
+    apiUrl = 'https://localhost:5022/CookingCompassAPI/Recipe'
 
     constructor(private httpClient: HttpClient, private authService: AuthService){}
 
@@ -20,18 +20,14 @@ export class UserService {
         });
     }
 
-    getAll(): Observable<User[]> {
-        return this.httpClient.get<User[]>(this.apiUrl, { headers: this.getAuthHeaders() })
+    getAll(): Observable<Recipe[]> {
+        return this.httpClient.get<Recipe[]>(this.apiUrl, { headers: this.getAuthHeaders() })
             .pipe(catchError(this.handleError));
     }
 
-    getUserById(id: number): Observable<User> {
-        return this.httpClient.get<User>(`${this.apiUrl}/userId/${id}`, { headers: this.getAuthHeaders() })
-            .pipe(catchError(this.handleError));
-    }
-
-    save(userDTO: User): Observable<User> {
-        return this.httpClient.post<User>(this.apiUrl, userDTO, { headers: this.getAuthHeaders() })
+    save(recipeDTO: Recipe): Observable<Recipe> {
+       
+        return this.httpClient.post<Recipe>(this.apiUrl, recipeDTO, { headers: this.getAuthHeaders() })
             .pipe(catchError(this.handleError));
     }
 
