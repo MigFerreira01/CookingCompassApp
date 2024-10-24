@@ -12,6 +12,7 @@ import { AuthService } from 'src/services/auth-service';
 export class UserLoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
+  isLoggedIn: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -35,16 +36,18 @@ export class UserLoginComponent {
     this.authService.login(email, password).subscribe({
       next: (response) => {
         console.log('Login successful!', response);
+        this.isLoggedIn = true;
         this.router.navigate(['/user']);
       },
-      error: (err) => {
-        this.errorMessage = 'Login failed. Please check your credentials.';
-        console.error('Login error', err);
+      error: (error) => {
+        this.errorMessage = error.message;
       }
     });
   }
 
   onLogout() {
     this.authService.logout();
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 }

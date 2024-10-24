@@ -14,6 +14,7 @@ export class UserFormComponent implements OnInit {
     form: FormGroup = new FormGroup({
         id: new FormControl(0, Validators.required),
         name: new FormControl('', Validators.required),
+        username: new FormControl('',Validators.required),
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', Validators.required),
         isAdmin: new FormControl(false),
@@ -35,9 +36,11 @@ export class UserFormComponent implements OnInit {
             const user: User = {
                 id: 0, 
                 name: this.form.value.name, 
+                username: this.form.value.username,
                 email: this.form.value.email, 
-                isAdmin: this.form.value.isAdmin === 'true', 
-                isBlocked: this.form.value.isBlocked === 'true', 
+                password: this.form.value.password,
+                isAdmin: this.form.value.isAdmin === 'false', 
+                isBlocked: this.form.value.isBlocked === 'false', 
                 registrationDate: new Date()
             };
     

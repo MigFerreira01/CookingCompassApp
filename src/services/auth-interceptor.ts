@@ -9,6 +9,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.authService.getToken();
+
+        if (req.url.includes('cloudinary.com')) {
+            return next.handle(req);
+        }
+
         if (token) {
             const cloned = req.clone({
                 headers: req.headers.set('Authorization', `Bearer ${token}`)

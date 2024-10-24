@@ -6,6 +6,12 @@
     </div>
 
     <div>
+        <label for="username">User Name:</label>
+        <input id="username" formControlName="username" />
+        <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched">Plaese fill a valid username</div>
+    </div>
+
+    <div>
         <label for="email">Email:</label>
         <input id="email" formControlName="email" />
         <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Please fill a valid email.</div>
@@ -15,22 +21,6 @@
         <label for="password">Password:</label>
         <input id="password" type="password" formControlName="password" />
         <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Please fill out your password</div>
-    </div>
-
-    <div>
-        <label for="isAdmin">Set as Admin:</label>
-        <select id="isAdmin" formControlName="isAdmin">
-            <option [value]="false">No</option>
-            <option [value]="true">Yes</option>
-        </select>
-    </div>
-
-    <div>
-        <label for="isBlocked">Block user:</label>
-        <select id="isBlocked" formControlName="isBlocked">
-            <option [value]="false">No</option>
-            <option [value]="true">Yes</option>
-        </select>
     </div>
 
     <button type="submit">Save</button>

@@ -31,7 +31,7 @@ export class UserService {
     }
 
     save(userDTO: User): Observable<User> {
-        return this.httpClient.post<User>(this.apiUrl, userDTO, { headers: this.getAuthHeaders() })
+        return this.httpClient.post<User>(`${this.apiUrl}/register`, userDTO, { headers: this.getAuthHeaders() })
             .pipe(catchError(this.handleError));
     }
 

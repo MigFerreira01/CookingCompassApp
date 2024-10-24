@@ -12,7 +12,6 @@ export interface Recipe {
         comments: Comment[];
         duration: number;
         ingredients: RecipeIngredient[];
-
-        
+        imageUrl?: string;
         
 }

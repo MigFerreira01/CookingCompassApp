@@ -87,6 +87,10 @@ button[type="submit"]:disabled {
   font-weight: bold;
 }
 
+.register{
+  margin-top: 20px;
+}
+
 /* Form layout adjustments */
 form {
   display: flex;

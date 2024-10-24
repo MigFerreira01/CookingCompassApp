@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserFormComponent } from 'src/components/user-form/user-form.component';
@@ -11,7 +10,9 @@ import { UserProfileComponent } from 'src/components/user-profile/user-profile.c
 import { UserLoginComponent } from 'src/components/user-login/user-login.component';
 import { AuthInterceptor } from 'src/services/auth-interceptor';
 import { RecipeCreateComponent } from 'src/components/recipe-form/recipe-form.component';
-import { RecipeListComponent } from 'src/components/recipe-form copy/recipe-list.component';
+import { RecipeListComponent } from 'src/components/recipe-list/recipe-list.component';
+import { RecipeFeedComponent } from 'src/components/recipe-feed/recipe-feed.component';
+import { CloudinaryModule } from '@cloudinary/ng';
 
 @NgModule({
   declarations: [
@@ -21,13 +22,15 @@ import { RecipeListComponent } from 'src/components/recipe-form copy/recipe-list
     UserProfileComponent,
     UserLoginComponent,
     RecipeCreateComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    RecipeFeedComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CloudinaryModule,
     AppRoutingModule
   ],
   providers: [

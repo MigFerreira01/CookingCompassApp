@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, Subject, tap, throwError } from 'rxjs';
 
 
 export interface User {
@@ -14,6 +14,8 @@ export interface User {
 })
 export class AuthService {
   private apiUrl = 'https://localhost:5022/CookingCompassAPI/User'
+  
+  private loginStatus = new Subject<boolean>
 
   constructor(private http: HttpClient) {}
 
@@ -29,14 +31,37 @@ export class AuthService {
     .pipe(
       tap((response )=> {
         localStorage.setItem('jwtToken', response.token);
+        this.loginStatus.next(true)
       }),
-      catchError(this.handleError<string>('login'))
-    );
+      catchError((error: any) => {
+        let errorMsg = '';
+        
+        // Check the type of error and assign the message accordingly
+        if (error.status === 401) {
+          errorMsg = 'Invalid login credentials. Please try again.';
+        } else if (error.status === 400) {
+          errorMsg = 'There was an issue with your request. Please check your input.';
+        } else {
+          errorMsg = 'An unexpected error occurred. Please try again later.';
+        }
+
+        
+        console.error('Login error: ', error);
+        
+        
+        return throwError(() => new Error(errorMsg));
+      })
+    )
   }
   
-  logout(): void {
+  logout(): void {    
     // Remove the token on logout
-    sessionStorage.removeItem('jwtToken');
+    localStorage.removeItem('jwtToken');
+    this.loginStatus.next(false)
+  }
+
+  getLoginStatus() {
+    return this.loginStatus.asObservable();
   }
 
   getToken(): string | null {
