@@ -2,7 +2,6 @@
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 50px;
-  overflow: visible
 }
 
 .recipe-grid {
@@ -48,34 +47,6 @@
 .recipe-card .btn {
   border-radius: 50px;
   color: #4B4B4B;
-}
-
-.btn-primary {
-  background-color: #007bff; /* Primary color */
-  color: white; /* Text color */
-  border: none; /* No border */
-  padding: 10px 20px; /* Padding */
-  border-radius: 4px; /* Rounded corners */
-  font-size: 16px; /* Font size */
-  transition: background-color 0.3s ease; /* Smooth transition */
-}
-
-.btn-primary:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-.dropdown-menu {
-  border: 1px solid #ddd; /* Light border around dropdown */
-  border-radius: 4px; /* Rounded corners */
-  margin-top: 5px; /* Space between button and dropdown */
-  z-index: 1050; /* Ensure it overlays other components */
-  position: absolute; /* Add position to control placement */
-  display: none; /* Hide by default */
-  display: block !important;
-}
-
-.dropdown.show .dropdown-menu {
-  display: block; /* Show when dropdown is active */
 }
 
 @media only screen and (max-width: 1050px) {

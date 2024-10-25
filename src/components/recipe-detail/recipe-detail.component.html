@@ -9,10 +9,6 @@
         <textarea *ngIf="isEditMode" [(ngModel)]="editedRecipe.description"></textarea>
       </div>
 
-      <div class="recipe-image-area">
-        <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" alt="{{ recipe.name }} image" class="recipe-image" />
-      </div>
-
       <div class="recipe-group">
         <label class="recipe-label">Category:</label>
         <p *ngIf="!isEditMode" class="recipe-text">{{ recipe.category }}</p>
@@ -44,6 +40,9 @@
         <p *ngIf="!isEditMode" class="recipe-text">{{ recipe.duration }}</p>
         <input *ngIf="isEditMode" [(ngModel)]="editedRecipe.duration" type="number">
       </div>
+      <div class="recipe-image-area">
+        <img *ngIf="recipe.imageURL" [src]="recipe.imageURL" alt="{{ recipe.name }} image" class="recipe-image" />
+      </div>
     </div>
     
     <div class="recipe-right">
@@ -65,6 +64,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 

@@ -25,7 +25,7 @@ export class RecipeCreateComponent {
       quantity: 0,
       unit: ''
     }],
-    imageUrl: ''
+    imageURL: ''
   };
 
   constructor(private recipeService: RecipeService, private cloudinaryService: CloudinaryService) {}
@@ -80,7 +80,7 @@ export class RecipeCreateComponent {
   private uploadImage(file: File) {
     this.cloudinaryService.uploadImage(file).subscribe({
       next: (data: UploadApiResponse) => {
-        this.recipe.imageUrl = data.secure_url; // Store the uploaded image URL
+        this.recipe.imageURL = data.secure_url; // Store the uploaded image URL
         console.log('Image uploaded successfully:', data);
       },
       error: (error) => {

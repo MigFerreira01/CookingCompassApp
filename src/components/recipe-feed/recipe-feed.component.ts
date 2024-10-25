@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/models/recipe';
+import { RecipeCategory, RecipeCategoryLabels } from 'src/models/recipeCategory.enum';
 import { RecipeService } from 'src/services/recipe-service';
 
 @Component({
@@ -9,28 +10,43 @@ import { RecipeService } from 'src/services/recipe-service';
 })
 export class RecipeFeedComponent implements OnInit {
   recipes: Recipe[] = [];
-  expandedRecipes: { [key: number]: boolean } = {};
+  recipeCategories = Object.values(RecipeCategory).filter(value => typeof value === 'number') as RecipeCategory[];
+  filteredRecipes: Recipe[] = [];
+  dropdownOpen: boolean = false
 
   constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
+    
     this.getRecipes();
+
   }
 
   getRecipes(): void {
     this.recipeService.getAll().subscribe((data: Recipe[]) => {
         this.recipes = data;
         this.recipes = data.filter(recipe => recipe.status !== 'Pending' && recipe.status !== 'Rejected');
+        this.filteredRecipes = this.recipes;
     }, (error: any) => {
       console.error('Error fetching recipes:', error);
     });
   }
 
-  toggleRecipe(recipeId: number): void {
-    this.expandedRecipes[recipeId] = !this.expandedRecipes[recipeId];
-  }
 
-  isExpanded(recipeId: number): boolean {
-    return this.expandedRecipes[recipeId] || false;
+  filterRecipes(category: RecipeCategory | 'All'): void {
+    if (category === 'All') {
+      this.filteredRecipes = this.recipes;
+      this.dropdownOpen = false;
+    } else {
+      this.filteredRecipes = this.recipes.filter(recipe => {
+        // Assuming recipe.category is a string, you can convert it to RecipeCategory here
+        return recipe.category === RecipeCategory[category];
+    });
+    this.dropdownOpen = false;
+  }
+}
+
+  getCategoryLabel(category: RecipeCategory): string {
+    return RecipeCategoryLabels[category]; // Make sure RecipeCategoryLabels is defined and imported correctly
   }
 }

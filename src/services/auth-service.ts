@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, Subject, tap, throwError } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 
 export interface User {
+  id: number;
   name: string;
   email: string;
+  isAdmin:boolean;
   password: string;
 }
 
@@ -75,26 +78,6 @@ export class AuthService {
     };
   }
 
-  getCurrentUser(): {email: string | null; isAdmin : boolean} {
-    const token = this.getToken();
-    if (!token) {
-      return { email: null, isAdmin: false };
-    }
-
-    const payload = this.parseJwt(token);
-    return {
-      email: payload?.email || null,
-      isAdmin: payload?.IsAdmin || false,
-    }
-  }
-
-  private parseJwt(token: string): any {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(escape(window.atob(base64)));
-    return JSON.parse(jsonPayload);
-  }
-
   getProtectedData(): Observable<any> {
     const token = this.getToken();  
     const headers = new HttpHeaders({
@@ -107,4 +90,22 @@ export class AuthService {
         catchError(this.handleError<any>('getProtectedData'))
       );
     }
+
+      decodeToken(token: string): any {
+    try {
+      return jwtDecode(token);
+    } catch (Error) {
+      console.error('Invalid token', Error);
+      return null;
+    }
   }
+
+  getCurrentUserId(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = this.decodeToken(token);
+      return decodedToken?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'] || null;
+    }
+    return null;
+  }
+}

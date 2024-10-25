@@ -8,10 +8,12 @@ import { AuthService } from 'src/services/auth-service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
- 
+  currentUserId: string | null;
   isLoggedIn = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.currentUserId = null;
+  }
 
   title = 'CookingCompassApp';
   loginForm: any;
@@ -22,6 +24,8 @@ ngOnInit(): void {
     this.isLoggedIn = status;
   });
   this.isLoggedIn = !!this.authService.getToken();
+
+  this.currentUserId = this.authService.getCurrentUserId();
 }
 
 logOut() {

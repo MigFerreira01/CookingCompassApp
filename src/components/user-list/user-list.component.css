@@ -1,51 +1,69 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0px 0;
-    font-size: 18px;
-    text-align: left;
-}
-
-thead th {
-    background-color: #48b55e;
-    color: white;
-    padding: 10px;
-    border-bottom: 2px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    vertical-align: middle;
-}
-
-button {
-    background-color: #48b55e;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 15px;
-    margin: 2px 2px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-@media screen and (max-width: 600px) {
-    table {
-        font-size: 14px;
+.user-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+  }
+  
+  .user-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  .user-card {
+    border-radius: 15px;
+    overflow: hidden;
+    color: #4B4B4B;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .user-card .card-body {
+    padding: 20px;
+    color: #4B4B4B;
+  }
+  
+  .user-card .card-footer {
+    padding: 15px 20px;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-card .card-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #4B4B4B;
+  }
+  
+  .user-card .btn {
+    border-radius: 50px;
+    color: #4B4B4B;
+  }
+  
+  .no-users {
+    font-size: 1.2em;
+    color: #999;
+    text-align: center;
+    margin-top: 20px;
+    grid-column: span 4;
+  }
+  
+  @media only screen and (max-width: 1050px) {
+    .user-container {
+      margin-left: 50px;
+      margin-right: 50px;
     }
-
-    button {
-        font-size: 14px;
-        padding: 6px 12px;
+    
+    .user-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
-}
+  }
+  
+  @media only screen and (max-width: 750px) {
+    .user-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  

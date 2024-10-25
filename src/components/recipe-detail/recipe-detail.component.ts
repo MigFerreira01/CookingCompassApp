@@ -21,6 +21,7 @@ export class RecipeDetailComponent implements OnInit {
     if (recipeId) {
         
       this.getRecipeById(Number(recipeId));
+
   } else {
       console.error('Recipe ID in not on the route');
   }
@@ -29,6 +30,8 @@ export class RecipeDetailComponent implements OnInit {
   getRecipeById(id: number): void {
     this.recipeService.getRecipeById(id).subscribe((data: Recipe) => {
       this.recipe = data;
+      this.editedRecipe = { ...this.recipe };
+
     }, (error: any) => {
       console.error('Error fetching recipe:', error);
     });
@@ -38,22 +41,22 @@ export class RecipeDetailComponent implements OnInit {
     this.isEditMode = true;
     this.editedRecipe = { ...this.recipe }; // Create a copy for editing
   }
-
+  
   updateRecipe(): void {
-    if (this.recipe && this.recipe.id) {
-      this.recipeService.update(this.recipe.id).subscribe(
-        (data: Recipe) => {
-          this.recipe = data;
-          console.log('Recipe updated successfully');
-        },
-        (error: any) => {
+    if (!this.isEditMode) return;
+    this.recipeService.update(this.editedRecipe.id, this.editedRecipe).subscribe(
+      (response) => {
+          console.log('Recipe updated successfully:', response);
+          this.recipe = response;
+          this.isEditMode = false;
+          
+      },
+      (error) => {
           console.error('Error updating recipe:', error);
-        }
-      );
-    } else {
-      console.error('Recipe data is missing or invalid');
-    }
-  }
+          
+      }
+  );
+}
 
   cancelEdit(): void {
     this.isEditMode = false;  // Exit edit mode

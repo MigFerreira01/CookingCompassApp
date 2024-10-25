@@ -25,8 +25,8 @@ export class RecipeService {
             .pipe(catchError(this.handleError));
     }
 
-    update(Id: number): Observable<Recipe> {
-        return this.httpClient.post<Recipe>(`${this.apiUrl}/${Id}`, { headers: this.getAuthHeaders() })
+    update(id: number, recipe: Recipe): Observable<Recipe> {
+        return this.httpClient.put<Recipe>(`${this.apiUrl}/${id}`, recipe, { headers: this.getAuthHeaders() })
             .pipe(catchError(this.handleError));
     }
 

@@ -1,18 +1,54 @@
-<div class="recipe-list">
+<div class="recipe-container">
   <h2>Recipe List</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Recipe Name</th>
-        <th>User</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let recipe of recipes">
-        <td>{{ recipe.name }}</td>
-        <td>{{ recipe.user }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- Approved Recipes Section -->
+  <div class="recipe-status-section">
+    <h3>Approved Recipes</h3>
+    <div *ngIf="approvedRecipes.length > 0; else noApprovedRecipes" class="recipe-grid">
+      <div class="recipe-card card" *ngFor="let recipe of approvedRecipes">
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.name }}</h5>
+          <p class="card-text"><strong>User:</strong> {{ recipe.user }}</p>
+          <a href="recipeDetail\{{recipe.id}}" class="btn btn-outline-secondary">View Recipe</a>
+        </div>
+      </div>
+    </div>
+    <ng-template #noApprovedRecipes>
+      <div class="no-recipes">No approved recipes found.</div>
+    </ng-template>
+  </div>
+
+  <!-- Pending Recipes Section -->
+  <div class="recipe-status-section">
+    <h3>Pending Recipes</h3>
+    <div *ngIf="pendingRecipes.length > 0; else noPendingRecipes" class="recipe-grid">
+      <div class="recipe-card card" *ngFor="let recipe of pendingRecipes">
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.name }}</h5>
+          <p class="card-text"><strong>User:</strong> {{ recipe.user }}</p>
+          <a href="recipeDetail\{{recipe.id}}" class="btn btn-outline-secondary">View Recipe</a>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPendingRecipes>
+      <div class="no-recipes">No pending recipes found.</div>
+    </ng-template>
+  </div>
+
+  <!-- Rejected Recipes Section -->
+  <div class="recipe-status-section">
+    <h3>Rejected Recipes</h3>
+    <div *ngIf="rejectedRecipes.length > 0; else noRejectedRecipes" class="recipe-grid">
+      <div class="recipe-card card" *ngFor="let recipe of rejectedRecipes">
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.name }}</h5>
+          <p class="card-text"><strong>User:</strong> {{ recipe.user }}</p>
+          <a href="recipeDetail\{{recipe.id}}" class="btn btn-outline-secondary">View Recipe</a>
+        </div>
+      </div>
+    </div>
+    <ng-template #noRejectedRecipes>
+      <div class="no-recipes">No rejected recipes found.</div>
+    </ng-template>
+  </div>
 </div>

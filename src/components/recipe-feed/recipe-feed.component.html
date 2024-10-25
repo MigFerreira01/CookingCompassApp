@@ -1,7 +1,28 @@
 <div class="recipe-container">
+
+    <!-- Dropdown Filter -->
+    <div class="dropdown mb-3">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" [attr.aria-expanded]="dropdownOpen ? 'true' : 'false'" (click)="dropdownOpen = !dropdownOpen">
+        Select Category
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="categoryDropdown"*ngIf="dropdownOpen">
+        <li><a class="dropdown-item" (click)="filterRecipes('All')">All</a></li>
+        <li *ngFor="let category of recipeCategories">
+          <a class="dropdown-item" (click)="filterRecipes(category)">{{ getCategoryLabel(category) }}</a>
+        </li>    
+      </ul>
+    </div>
+  
+
     <div class="recipe-grid">
-        <div class="recipe-card card" *ngFor="let recipe of recipes">
-          <img src="https://feed.continente.pt/media/n3xlfk1e/frango-airfryer.jpg?anchor=center&mode=crop&width=826&height=620&rnd=133511109585170000&format=webp" class="card-img-top" alt="Savory Herb-Infused Chicken">
+        <div class="recipe-card card" *ngFor="let recipe of filteredRecipes">
+          <img *ngIf="recipe.imageURL?.trim() as imageUrl; else noImage" 
+           [src]="recipe.imageURL | trimQuotes" 
+           class="card-img-top" 
+           alt="Image">
+      <ng-template #noImage>
+        <img src="https://res.cloudinary.com/didwtxflj/image/upload/v1729849897/ehfzzfjak97dxnla0e4k.png" class="card-img-top" alt="No Image Available">
+      </ng-template>
           <div class="card-body">
             <h5 class="card-title">{{recipe.name}}</h5>
             <p class="card-text">
