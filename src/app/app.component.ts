@@ -11,7 +11,7 @@ import { UserService } from 'src/services/user-service';
 export class AppComponent implements OnInit {
   currentUserId: string | null = null; // Initialize as null
   isLoggedIn = false;
-  isAdmin: boolean = false;
+  isAdmin: boolean = true;
   userLogged!: User;
   dropdownOpen: boolean = false
 

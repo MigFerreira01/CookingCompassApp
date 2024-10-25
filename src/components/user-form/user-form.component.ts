@@ -50,7 +50,7 @@ export class UserFormComponent implements OnInit {
             this.userService.save(user).subscribe(
                 () => {
                     // Navigate or show success message
-                    this.Router.navigate(['/users']); // Redirect after save
+                    this.Router.navigate(['/login']); // Redirect after save
                 },
                 error => {
                     // Handle error

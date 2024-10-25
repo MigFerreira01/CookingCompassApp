@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Recipe } from 'src/models/recipe';
 import { CloudinaryService, UploadApiResponse } from 'src/services/image-service';
 import { RecipeService } from 'src/services/recipe-service';
@@ -16,7 +17,7 @@ export class RecipeCreateComponent {
     user: '',
     category: '',
     difficulty: '',
-    status: '',
+    status: 'Pending',
     comments: [],
     duration: 0,
     ingredients: [{
@@ -28,7 +29,7 @@ export class RecipeCreateComponent {
     imageURL: ''
   };
 
-  constructor(private recipeService: RecipeService, private cloudinaryService: CloudinaryService) {}
+  constructor(private recipeService: RecipeService, private cloudinaryService: CloudinaryService, private router: Router) {}
 
   addIngredient() {
     this.recipe.ingredients.push({
@@ -37,6 +38,7 @@ export class RecipeCreateComponent {
       quantity: 0,
       unit: ''
     });
+    
   }
 
   deleteIngredient(index: number) {
@@ -93,9 +95,13 @@ export class RecipeCreateComponent {
     this.recipeService.save(this.recipe).subscribe((response: any) => {
       // Handle successful response
       console.log('Recipe created successfully:', response);
+      this.router.navigate([`/recipeFeed`]);
     }, (error: any) => {
       // Handle error response
       console.error('Error creating recipe:', error);
     });
+
+
+
   }
 }

@@ -28,6 +28,13 @@ body {
     color: #C39B00; 
 }
 
+.navbar-brand:hover {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #C39B00; 
+}
+
 .collapse{
    flex-basis: auto;
    flex-grow: 0;
