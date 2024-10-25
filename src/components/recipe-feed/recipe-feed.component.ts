@@ -20,6 +20,7 @@ export class RecipeFeedComponent implements OnInit {
   getRecipes(): void {
     this.recipeService.getAll().subscribe((data: Recipe[]) => {
         this.recipes = data;
+        this.recipes = data.filter(recipe => recipe.status !== 'Pending' && recipe.status !== 'Rejected');
     }, (error: any) => {
       console.error('Error fetching recipes:', error);
     });

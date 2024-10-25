@@ -21,7 +21,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
+              "src/http://res.cloudinary.com/didwtxflj/image/upload/v1729811535/bf4zq2d7md7stsihft9h.png",
               "src/assets"
             ],
             "styles": [
@@ -90,7 +90,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/favicon.ico",
+              "src/http://res.cloudinary.com/didwtxflj/image/upload/v1729811535/bf4zq2d7md7stsihft9h.png",
               "src/assets"
             ],
             "styles": [

@@ -25,6 +25,11 @@ export class UserService {
             .pipe(catchError(this.handleError));
     }
 
+    getUserWithRecipes(name: string ): Observable<User> {
+        return this.httpClient.get<User>(`${this.apiUrl}/username/${name}`, { headers: this.getAuthHeaders() })
+            .pipe(catchError(this.handleError));
+    }
+
     getUserById(id: number): Observable<User> {
         return this.httpClient.get<User>(`${this.apiUrl}/userId/${id}`, { headers: this.getAuthHeaders() })
             .pipe(catchError(this.handleError));

@@ -12,10 +12,9 @@
 }
 
 .recipe-card {
-  /* Control the width of the card */
   border-radius: 15px;
-  overflow: hidden;
-  /* Ensures the image and card content stay within rounded corners */
+  overflow: hidden; 
+  color: #4B4B4B;
 }
 
 .recipe-card .card-img-top {
@@ -29,22 +28,25 @@
 
 .recipe-card .card-body {
   padding: 20px;
-
+  color: #4B4B4B;
 }
 
 .recipe-card .card-footer {
   padding: 15px 20px;
   background-color: #fff;
   border-top: 1px solid #e0e0e0;
+  color: #4B4B4B;
 }
 
 .recipe-card .card-title {
   font-weight: 600;
   margin-bottom: 10px;
+  color: #4B4B4B;
 }
 
 .recipe-card .btn {
   border-radius: 50px;
+  color: #4B4B4B;
 }
 
 @media only screen and (max-width: 1050px) {

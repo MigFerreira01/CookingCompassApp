@@ -39,6 +39,11 @@ export class RecipeCreateComponent {
     });
   }
 
+  deleteIngredient(index: number) {
+
+    this.recipe.ingredients.splice(index, 1);
+  }
+
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {

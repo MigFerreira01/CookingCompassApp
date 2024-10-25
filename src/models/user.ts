@@ -1,3 +1,5 @@
+import { Recipe } from "./recipe";
+
 export interface User {
     id: number;
     name:string; 
@@ -7,4 +9,5 @@ export interface User {
     isAdmin:boolean;
     isBlocked:boolean;
     registrationDate:Date;
+    recipes: Recipe[];
 }

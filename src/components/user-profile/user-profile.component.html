@@ -1,53 +1,47 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>User Profile</title>
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="mb-0">User Profile</h2>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h5 class="card-title">Profile Details</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <strong>ID:</strong> <span>{{ user.id }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Name:</strong> <span>{{ user.name }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Email:</strong> <span>{{ user.email }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Role:</strong> <span>{{ user.isAdmin ? 'Admin' : 'User' }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Status:</strong> <span>{{ user.isBlocked ? 'Blocked' : 'Active' }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Registration Date:</strong> <span>{{ user.registrationDate | date:'medium' }}</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-8">
-                        <h5 class="card-title">Additional Information</h5>
-                        <p class="card-text">Here you can add more details about the user, such as bio, interests, or contact information.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer text-muted">
-            </div>
+<div class="user-display">
+    <div class="user-title">{{ user.name }}</div>
+    
+    <div class="user-layout">
+      <div class="user-left">
+        <div class="user-group">
+          <label class="user-label">User Id:</label>
+          <p class="user-text">{{ user.id }}</p>
         </div>
+  
+        <div class="user-group">
+          <label class="user-label">Username:</label>
+          <p class="user-text">{{ user.username }}</p>
+        </div>
+  
+        <div class="user-group">
+          <label class="user-label">Role:</label>
+          <p class="user-text">{{ user.isAdmin ? 'Admin' : 'User' }}</p>
+        </div>
+  
+        <div class="user-group">
+          <label class="user-label">Status:</label>
+          <p class="user-text">{{ user.isBlocked ? 'Blocked' : 'Unblocked' }}</p>
+        </div>
+  
+        <div class="user-group">
+          <label class="user-label">Registration Date:</label>
+          <p class="user-text">{{ user.registrationDate }}</p>
+        </div>
+        </div>
+        
+        <div class="user-right">
+          <h4 class="recipes-title">Recipes</h4> 
+          <div class="recipes-section">
+            <div *ngFor="let recipe of user.recipes; let i = index;" class="recipe-group">
+              <p class="recipe-item">
+                <strong>Title:</strong> {{ recipe.name }} <br>
+                <strong>Category:</strong> {{ recipe.category }} <br>
+                <strong>State:</strong> {{ recipe.status }}
+              </p>
+              <a href="recipeDetail\{{recipe.id}}" class="btn btn-outline-secondary">View Recipe</a>
+            </div>
+          </div>       
+      </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+  </div>
+  

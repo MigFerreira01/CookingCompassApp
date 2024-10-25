@@ -13,6 +13,7 @@ import { RecipeCreateComponent } from 'src/components/recipe-form/recipe-form.co
 import { RecipeListComponent } from 'src/components/recipe-list/recipe-list.component';
 import { RecipeFeedComponent } from 'src/components/recipe-feed/recipe-feed.component';
 import { CloudinaryModule } from '@cloudinary/ng';
+import { RecipeDetailComponent } from 'src/components/recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CloudinaryModule } from '@cloudinary/ng';
     UserLoginComponent,
     RecipeCreateComponent,
     RecipeListComponent,
-    RecipeFeedComponent
+    RecipeFeedComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,

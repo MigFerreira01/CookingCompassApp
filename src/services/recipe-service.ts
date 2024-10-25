@@ -20,6 +20,16 @@ export class RecipeService {
         });
     }
 
+    getRecipeById(id :number): Observable<Recipe> {
+        return this.httpClient.get<Recipe>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() })
+            .pipe(catchError(this.handleError));
+    }
+
+    update(Id: number): Observable<Recipe> {
+        return this.httpClient.post<Recipe>(`${this.apiUrl}/${Id}`, { headers: this.getAuthHeaders() })
+            .pipe(catchError(this.handleError));
+    }
+
     getAll(): Observable<Recipe[]> {
         return this.httpClient.get<Recipe[]>(this.apiUrl, { headers: this.getAuthHeaders() })
             .pipe(catchError(this.handleError));

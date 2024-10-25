@@ -8,6 +8,7 @@ import { UserLoginComponent } from 'src/components/user-login/user-login.compone
 import { UserProfileComponent } from 'src/components/user-profile/user-profile.component';
 import { AuthGuard } from 'src/services/auth-guard';
 import { RecipeFeedComponent } from 'src/components/recipe-feed/recipe-feed.component';
+import { RecipeDetailComponent } from 'src/components/recipe-detail/recipe-detail.component';
 
 const routes: Routes = [
   {path: 'login', component: UserLoginComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'recipe', component: RecipeCreateComponent, canActivate: [AuthGuard]},
   {path: 'recipeList', component: RecipeListComponent, canActivate: [AuthGuard]},
   {path: 'recipeFeed', component: RecipeFeedComponent},
+  {path: 'recipeDetail/:id', component: RecipeDetailComponent},
   { path: '', redirectTo: '/recipeFeed', pathMatch: 'full' }, // Default redirect
   { path: '**', redirectTo: '/recipeFeed' } // Redirect any unknown paths
 ];

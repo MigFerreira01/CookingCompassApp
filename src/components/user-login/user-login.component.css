@@ -19,6 +19,10 @@
   color: #333333;
 }
 
+.chooseImage {
+  background-color: #ccc;
+}
+
 /* Input field styling */
 input[type="email"], input[type="password"] {
   width: 100%;

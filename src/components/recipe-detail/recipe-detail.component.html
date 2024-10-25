@@ -1,0 +1,75 @@
+<div class="recipe-display">
+  <div class="recipe-title">{{ recipe.name }}</div>
+  
+  <div class="recipe-layout">
+    <div class="recipe-left">
+      <div class="recipe-group">
+        <label class="recipe-label">Description:</label>
+        <p *ngIf="!isEditMode" class="recipe-text">{{ recipe.description }}</p>
+        <textarea *ngIf="isEditMode" [(ngModel)]="editedRecipe.description"></textarea>
+      </div>
+
+      <div class="recipe-image-area">
+        <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" alt="{{ recipe.name }} image" class="recipe-image" />
+      </div>
+
+      <div class="recipe-group">
+        <label class="recipe-label">Category:</label>
+        <p *ngIf="!isEditMode" class="recipe-text">{{ recipe.category }}</p>
+        <input *ngIf="isEditMode" [(ngModel)]="editedRecipe.category" type="text">
+      </div>
+
+      <div class="recipe-group">
+        <label class="recipe-label">Difficulty:</label>
+        <p *ngIf="!isEditMode" class="recipe-text">{{ recipe.difficulty }}</p>
+        <select *ngIf="isEditMode" [(ngModel)]="editedRecipe.difficulty">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="recipe-group">
+        <label class="recipe-label">Status:</label>
+        <p *ngIf="!isEditMode" class="recipe-text">{{ recipe.status }}</p>
+        <select *ngIf="isEditMode" [(ngModel)]="editedRecipe.status">
+          <option value="Pending">Pending</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+
+      <div class="recipe-group">
+        <label class="recipe-label">Duration (in minutes):</label>
+        <p *ngIf="!isEditMode" class="recipe-text">{{ recipe.duration }}</p>
+        <input *ngIf="isEditMode" [(ngModel)]="editedRecipe.duration" type="number">
+      </div>
+    </div>
+    
+    <div class="recipe-right">
+      <h4 class="ingredients-title">Ingredients</h4>
+      <div class="ingredients-section">
+        <div *ngFor="let ingredient of recipe.ingredients; let i = index;" class="ingredient-group">
+          <p *ngIf="!isEditMode" class="ingredient-item">
+            <strong>Ingredient Name:</strong> {{ ingredient.ingredientName }} <br>
+            <strong>Quantity:</strong> {{ ingredient.quantity }} <br>
+            <strong>Unit:</strong> {{ ingredient.unit }}
+          </p>
+          <div *ngIf="isEditMode" class="ingredient-item">
+            <label>Ingredient Name:</label>
+            <input [(ngModel)]="editedRecipe.ingredients[i].ingredientName" type="text"> <br>
+            <label>Quantity:</label>
+            <input [(ngModel)]="editedRecipe.ingredients[i].quantity" type="number"> <br>
+            <label>Unit:</label>
+            <input [(ngModel)]="editedRecipe.ingredients[i].unit" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit, Save, and Cancel Buttons -->
+  <button *ngIf="!isEditMode" (click)="editRecipe()">Edit</button>
+  <button *ngIf="isEditMode" (click)="updateRecipe()">Save</button>
+  <button *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
+</div>

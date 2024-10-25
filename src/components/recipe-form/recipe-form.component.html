@@ -1,144 +1,160 @@
-<!-- recipe-form.component.html -->
-<form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
-    <div>
-      <label for="name">Name:</label>
-      <input 
-        type="text" 
-        id="name" 
-        required 
-        [(ngModel)]="recipe.name" 
-        name="name" 
-        placeholder="Enter recipe name" 
-      />
-    </div>
-  
-    <div>
-      <label for="description">Description:</label>
-      <textarea 
-        id="description" 
-        required 
-        [(ngModel)]="recipe.description" 
-        name="description" 
-        placeholder="Enter recipe description"
-      ></textarea>
-    </div>
-  
-    <div
-    class="upload-area"
+<form class="recipe-form" (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+  <h3 class="form-title">New Recipe</h3>
+ <div class="form-layout">
+  <div class="form-left">
+  <div class="form-group">
+    <label for="name" class="form-label">Name:</label>
+    <input class="form-input"
+      type="text" 
+      id="name" 
+      required 
+      [(ngModel)]="recipe.name" 
+      name="name" 
+      placeholder="Enter recipe name" 
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="description" class="form-label">Description:</label>
+    <textarea class="form-textarea"
+      id="description" 
+      required 
+      [(ngModel)]="recipe.description" 
+      name="description" 
+      placeholder="Enter recipe description"
+    ></textarea>
+  </div>
+
+  <div class="upload-area"
     (dragover)="onDragOver($event)"
     (dragleave)="onDragLeave($event)"
     (drop)="onDrop($event)"
   >
-    <p>Drag and drop an image here or click to select one</p>
-    <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+  
+    
+    <div class="upload-input-group">
+      <p class="upload-instructions">Drag and drop an image here or click to select one</p>
+      <!-- Hidden input -->
+      <input type="file" id="imageInput" class="chooseImage" accept="image/*" (change)="onFileSelected($event)" style="display:none;" />
+
+      <!-- Custom button that triggers file input -->
+      <button type="button" class="upload-button" onclick="document.getElementById('imageInput').click()">Choose an Image</button>
+    </div>
   </div>
-  
-    <div>
-      <label for="category">Category:</label>
-      <select 
-        id="category" 
-        required 
-        [(ngModel)]="recipe.category" 
-        name="category"
-      >
-        <option value="" disabled selected>Select a category</option>
-        <option value="AppetizersandSnacks">Appetizers and Snacks</option>
-        <option value="Soups">Soups</option>
-        <option value="Salads">Salads</option>
-        <option value="MainDishes">Main Dishes</option>
-        <option value="SideDishes">Side Dishes</option>
-        <option value="Desserts">Desserts</option>
-        <option value="Bread">Bread</option>
-        <option value="Sauces">Sauces</option>
-        <option value="Drinks">Drinks</option>
-      </select>
-    </div>
-  
-    <div>
-      <label for="difficulty">Difficulty:</label>
-      <select 
-        id="difficulty" 
-        required 
-        [(ngModel)]="recipe.difficulty" 
-        name="difficulty"
-      >
-        <option value="" disabled selected>Select difficulty level</option>
-        <option value="Easy">Easy</option>
-        <option value="Medium">Medium</option>
-        <option value="Hard">Hard</option>
-      </select>
-    </div>
-  
-    <div>
-      <label for="status">Status:</label>
-      <select 
-        id="status" 
-        required 
-        [(ngModel)]="recipe.status" 
-        name="status"
-      >
-        <option value="" disabled selected>Select approval status</option>
-        <option value="Pending">Pending</option>
-        <option value="Approved">Approved</option>
-        <option value="Rejected">Rejected</option>
-      </select>
-    </div>
-  
-    <div>
-      <label for="duration">Duration (in minutes):</label>
-      <input 
-        type="number" 
-        id="duration" 
-        required 
-        [(ngModel)]="recipe.duration" 
-        name="duration" 
-        placeholder="Enter duration in minutes" 
-      />
-    </div>
-  
-    <div>
-      <h3>Ingredients</h3>
-      <div *ngFor="let ingredient of recipe.ingredients; let i = index">
-        <div>
-          <label for="ingredientName{{i}}">Ingredient Name:</label>
-          <input 
-            type="text" 
-            id="ingredientName{{i}}" 
-            required 
-            [(ngModel)]="ingredient.ingredientName" 
-            name="ingredientName{{i}}"
-            placeholder="Enter ingredient name" 
-          />
-        </div>
-  
-        <div>
-          <label for="quantity{{i}}">Quantity:</label>
-          <input 
-            type="number" 
-            id="quantity{{i}}" 
-            required 
-            [(ngModel)]="ingredient.quantity" 
-            name="quantity{{i}}"
-            placeholder="Enter quantity" 
-          />
-        </div>
-  
-        <div>
-          <label for="unit{{i}}">Unit:</label>
-          <input 
-            type="text" 
-            id="unit{{i}}" 
-            required 
-            [(ngModel)]="ingredient.unit" 
-            name="unit{{i}}"
-            placeholder="Enter unit (e.g., grams, cups)" 
-          />
-        </div>
+
+  <div class="form-group">
+    <label for="category" class="form-label">Category:</label>
+    <select class="form-select" 
+      id="category" 
+      required 
+      [(ngModel)]="recipe.category" 
+      name="category"
+    >
+      <option value="" disabled selected>Select a category</option>
+      <option value="AppetizersandSnacks">Appetizers and Snacks</option>
+      <option value="Soups">Soups</option>
+      <option value="Salads">Salads</option>
+      <option value="MainDishes">Main Dishes</option>
+      <option value="SideDishes">Side Dishes</option>
+      <option value="Desserts">Desserts</option>
+      <option value="Bread">Bread</option>
+      <option value="Sauces">Sauces</option>
+      <option value="Drinks">Drinks</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="difficulty" class="form-label">Difficulty:</label>
+    <select class="form-select"
+      id="difficulty" 
+      required 
+      [(ngModel)]="recipe.difficulty" 
+      name="difficulty"
+    >
+      <option value="" disabled selected>Select difficulty level</option>
+      <option value="Easy">Easy</option>
+      <option value="Medium">Medium</option>
+      <option value="Hard">Hard</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="status" class="form-label">Status:</label>
+    <select class="form-select"
+      id="status" 
+      required 
+      [(ngModel)]="recipe.status" 
+      name="status"
+    >
+      <option value="" disabled selected>Select approval status</option>
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="duration" class="form-label">Duration (in minutes):</label>
+    <input class="form-input"
+      type="number" 
+      id="duration" 
+      required 
+      [(ngModel)]="recipe.duration" 
+      name="duration" 
+      placeholder="Enter duration in minutes" 
+    />
+  </div>
+  </div>
+
+  <div class="form-right">
+  <div class="ingredients-section">
+ 
+    <div *ngFor="let ingredient of recipe.ingredients; let i = index;" class="ingredient-group">
+      <div class="form-group">
+        <label for="ingredientName{{i}}" class="form-label">Ingredient Name:</label>
+        <input class="form-input"
+          type="text"
+          id="ingredientName{{i}}"
+          required
+          [(ngModel)]="ingredient.ingredientName"
+          name="ingredientName{{i}}"
+          placeholder="Enter ingredient name"
+        />
       </div>
   
-      <button type="button" (click)="addIngredient()">Add Ingredient</button>
+      <div class="form-group">
+        <label for="quantity{{i}}" class="form-label">Quantity:</label>
+        <input class="form-input"
+          type="number"
+          id="quantity{{i}}"
+          required
+          [(ngModel)]="ingredient.quantity"
+          name="quantity{{i}}"
+          placeholder="Enter quantity"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="unit{{i}}" class="form-label">Unit:</label>
+        <input class="form-input"
+          type="text"
+          id="unit{{i}}"
+          required
+          [(ngModel)]="ingredient.unit"
+          name="unit{{i}}"
+          placeholder="Enter unit (e.g., grams, cups)"
+        />
+      </div>
+      <button type="button" class="delete-ingredient-button" (click)="deleteIngredient(i)"><span>-</span></button>
     </div>
   
-    <button type="submit">Create Recipe</button>
-  </form>
-  
+    <!-- Button to add new ingredients -->
+    <button type="button" class="add-ingredient-button" (click)="addIngredient()">
+      <span>+</span>
+    </button>
+  </div>
+  </div>
+ </div>
+
+  <button type="submit" class="submit-button">Create Recipe</button>
+</form>

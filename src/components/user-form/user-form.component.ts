@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { empty } from 'rxjs';
 import { User } from 'src/models/user';
 import { UserService } from 'src/services/user-service';
 
@@ -41,7 +42,8 @@ export class UserFormComponent implements OnInit {
                 password: this.form.value.password,
                 isAdmin: this.form.value.isAdmin === 'false', 
                 isBlocked: this.form.value.isBlocked === 'false', 
-                registrationDate: new Date()
+                registrationDate: new Date(),
+                recipes: []
             };
     
             // Call the user service to save the user

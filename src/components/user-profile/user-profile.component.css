@@ -1,1 +1,59 @@
-
+.user-display {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Optional: Adds space between elements */
+    margin: 25px 100px 25px 100px;
+    border: 4px solid;
+    border-color:  #708D23;   
+    padding: 20px;
+    border-radius: 40px;
+    color:#4B4B4B;
+  }
+  
+  .user-layout {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .user-title {
+    margin-bottom: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  .user-left,
+  .user-right {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .user-label {
+    font-weight: bold;
+  }
+  
+  .user-text {
+    margin: 5px 0;
+  }
+  
+  .recipes-section {
+    border: 4px solid #4B4B4B;
+    padding: 20px;
+    width: 100%; 
+    margin: 0px auto;
+    border-radius: 10px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+  }
+  
+  .recipe-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #A8C686;
+    padding: 10px;
+    border-radius: 5px;
+  
+  }
+  
