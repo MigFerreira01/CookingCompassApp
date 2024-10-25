@@ -37,7 +37,7 @@ export class UserLoginComponent {
       next: (response) => {
         console.log('Login successful!', response);
         this.isLoggedIn = true;
-        this.router.navigate(['/user']);
+        this.router.navigate(['/userFeed']);
       },
       error: (error) => {
         this.errorMessage = error.message;
