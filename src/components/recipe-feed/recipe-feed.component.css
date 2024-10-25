@@ -8,7 +8,7 @@
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* grid-auto-rows: 1fr; */
+  
   gap: 20px;
 }
 
@@ -20,11 +20,11 @@
 
 .recipe-card .card-img-top {
   height: 200px;
-  /* Set a fixed height for the image */
+  
   object-fit: cover;
-  /* Ensures the image fills the card without stretching */
+  
   border-bottom: 1px solid #e0e0e0;
-  /* Adds a subtle border between the image and body */
+  
 }
 
 .recipe-card .card-body {
@@ -34,7 +34,7 @@
 
 .recipe-card .card-footer {
   padding: 15px 20px;
-  background-color: #fff;
+  background-color: #FFF9E6;
   border-top: 1px solid #e0e0e0;
   color: #4B4B4B;
 }
@@ -42,41 +42,61 @@
 .recipe-card .card-title {
   font-weight: 600;
   margin-bottom: 10px;
-  color: #4B4B4B;
+  color: #5D3A3A;
 }
 
 .recipe-card .btn {
   border-radius: 50px;
-  color: #4B4B4B;
+}
+
+.btn-outline-secondary{
+  border-color: #D35400;
+}
+
+.btn-outline-secondary:hover{
+  background-color: #D35400;
 }
 
 .btn-primary {
-  background-color: #007bff; /* Primary color */
-  color: white; /* Text color */
-  border: none; /* No border */
-  padding: 10px 20px; /* Padding */
-  border-radius: 4px; /* Rounded corners */
-  font-size: 16px; /* Font size */
-  transition: background-color 0.3s ease; /* Smooth transition */
+  background-color: #D35400; 
+  color: #ffffff ; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  transition: background-color 0.3s ease; 
 }
 
 .btn-primary:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #D35400; 
 }
 
 .dropdown-menu {
-  border: 1px solid #ddd; /* Light border around dropdown */
-  border-radius: 4px; /* Rounded corners */
-  margin-top: 5px; /* Space between button and dropdown */
-  z-index: 1050; /* Ensure it overlays other components */
-  position: absolute; /* Add position to control placement */
-  display: none; /* Hide by default */
+  border-radius: 4px; 
+  margin-top: 5px; 
+  z-index: 1050; 
+  position: absolute; 
+  display: none; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   display: block !important;
 }
 
 .dropdown.show .dropdown-menu {
-  display: block; /* Show when dropdown is active */
+  display: block; 
 }
+
+.dropdown-item {
+  color:#e0e0e0;
+}
+
+.dropdown-item {
+  color:#e0e0e0;
+}
+
+.dropdown-item:hover {
+  background-color:#4B4B4B;
+}
+
 
 @media only screen and (max-width: 1050px) {
   .recipe-container {

@@ -10,8 +10,6 @@ import { UserService } from 'src/services/user-service';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
-  loading: boolean = true; // Set loading state
-
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
@@ -22,23 +20,19 @@ export class UserListComponent implements OnInit {
     this.userService.getAll().subscribe(
       (data) => {
         this.users = data;
-        this.loading = false; // Data fetched, loading complete
-      },
+               },
       (error) => {
         console.error('Error fetching users:', error);
-        this.loading = false; // Loading complete even if there's an error
-      }
+               }
     );
   }
 
   deleteUser(user: User) {
     this.userService.delete(user.id).subscribe(
       (response) => {
-        this.getUsers(); // Refresh the user list after deletion
-      },
+        this.getUsers();       },
       (error) => {
-        console.error('Error deleting user:', error); // Log any errors during deletion
-      }
+        console.error('Error deleting user:', error);       }
     );
   }
 

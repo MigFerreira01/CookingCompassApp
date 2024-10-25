@@ -1,7 +1,7 @@
 .user-display {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Optional: Adds space between elements */
+    gap: 20px; 
     margin: 25px 100px 25px 100px;
     border: 4px solid;
     border-color:  #708D23;   
@@ -30,10 +30,12 @@
   
   .user-label {
     font-weight: bold;
+    font-size:25px;
   }
   
   .user-text {
     margin: 5px 0;
+    font-size:25px;
   }
   
   .recipes-section {
@@ -51,9 +53,18 @@
   .recipe-item {
     display: flex;
     flex-direction: column;
-    background-color: #A8C686;
+    background-color: #FFF9E6;
     padding: 10px;
     border-radius: 5px;
-  
+    font-size:20px;
   }
+
+  .btn-outline-secondary{
+    border-color: #D35400;
+  }
+  
+  .btn-outline-secondary:hover{
+    background-color: #D35400;
+  }
+  
   

@@ -15,6 +15,7 @@ import { RecipeFeedComponent } from 'src/components/recipe-feed/recipe-feed.comp
 import { CloudinaryModule } from '@cloudinary/ng';
 import { RecipeDetailComponent } from 'src/components/recipe-detail/recipe-detail.component';
 import { TrimQuotesPipe } from 'src/pipes/trim-quotes';
+import { CustomDateFormatPipe } from 'src/pipes/date-pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TrimQuotesPipe } from 'src/pipes/trim-quotes';
     RecipeListComponent,
     RecipeFeedComponent,
     RecipeDetailComponent,
-    TrimQuotesPipe
+    TrimQuotesPipe,
+    CustomDateFormatPipe
   ],
   imports: [
     BrowserModule,

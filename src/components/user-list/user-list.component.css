@@ -13,7 +13,6 @@
   .user-card {
     border-radius: 15px;
     overflow: hidden;
-    color: #4B4B4B;
     border: 1px solid #e0e0e0;
   }
   
@@ -24,7 +23,7 @@
   
   .user-card .card-footer {
     padding: 15px 20px;
-    background-color: #fff;
+    background-color:  #FFF9E6;
     border-top: 1px solid #e0e0e0;
     display: flex;
     justify-content: space-between;
@@ -39,7 +38,6 @@
   
   .user-card .btn {
     border-radius: 50px;
-    color: #4B4B4B;
   }
   
   .no-users {
@@ -49,6 +47,24 @@
     margin-top: 20px;
     grid-column: span 4;
   }
+
+  .btn-outline-secondary{
+    border-color: #D35400;
+  }
+  
+  .btn-outline-secondary:hover{
+    background-color: #D35400;
+  }
+  
+  .btn-outline-danger{
+    border-color: #C0392B;
+  }
+  
+  .btn-outline-danger:hover{
+    background-color: #A03024;
+    color:#FFF9E6;
+  }
+  
   
   @media only screen and (max-width: 1050px) {
     .user-container {

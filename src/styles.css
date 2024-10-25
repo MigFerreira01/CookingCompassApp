@@ -1,14 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    background-color: #FFFF; /* Creamy White background */
-    color: #4B4B4B; /* Charcoal Gray text */
-    font-family: "Montserrat", sans-serif; /* Set a default font */
+    background-color: #FFFF; 
+    color: #4B4B4B; 
+    font-family: "Montserrat", sans-serif; 
 
 }
 
-/* NavBar styles */
+
 .navbar-expand-lg {
     padding-left: 25px;
     padding-right: 25px;
@@ -25,7 +25,7 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 30px;
-    color: #4B4B4B; /* Dark color for brand */
+    color: #C39B00; 
 }
 
 .collapse{
@@ -37,7 +37,7 @@ body {
     display: flex;   
     justify-content: center;
     align-items: center;    
-    gap: 20px; /* espaçamento entre os elementos num display flex*/
+    gap: 20px; 
 }
 
 .nav-item {
@@ -47,50 +47,50 @@ body {
 }
 
 .nav-item:before{
-    transition: .3s all ease-in-out;
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 5px;
-    background-color: transparent;
-    border-radius: 4px;
+    transition: .3s all ease-in-out !important;
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important; 
+    height: 5px !important;
+    background-color: transparent !important;
+    border-radius: 4px !important;
 }
 
 .nav-item:hover:before{
-  background-color: #D35400;
+  background-color: #D35400 !important;
 }
 
-.nav-link {
-    color: #4B4B4B; /* Light gray for inactive links */
-    font-size: 16px;
+.nav-link  {
+    color: #4B4B4B !important; 
+    font-size: 16px !important;
 }
 
 .nav-link:hover {
-    color: #D35400; /* Darker hover color */
+    color: #D35400 !important; 
 }
 
 .nav-link.active {
-    color: #D35400; /* Active link color */
-    font-weight: bold;
+    color: #D35400 !important; 
+    font-weight: bold !important;
 }
 
 .nav-link.router-active.active {
-    color:#4B4B4B;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px; 
+    color:#4B4B4B !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 16px !important; 
 }
 
 .nav-link.active::after {
-    transition: .3s all ease-in-out;
-    content: "";
-    position: absolute;
-    left:0;
-    bottom: 0;
-    width: 100%;
-    height: 5px;
-    border-radius: 4px;
-    background-color: #D35400; /* Light orange underline for active link */
+    transition: .3s all ease-in-out !important;
+    content: "" !important;
+    position: absolute !important;
+    left:0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 5px !important;
+    border-radius: 4px !important;
+    background-color: #D35400 !important; 
 }
 
 .nav-right{
@@ -101,7 +101,7 @@ body {
 .login-btn {
     padding: 8px 20px;
     background-color: #D35400;
-    color: #4B4B4B; 
+    color: #FFF9E6; 
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -111,77 +111,165 @@ body {
 }
 
 .login-btn:hover {
-    background-color: #555; /* Darker background on hover */
+    background-color: #555; 
 }
 
-/* Styles for the search button */
-.search-btn {
-    background-color: #e0e0d1; /* Light gray background */
-    border: none;
-    border-radius: 50%; /* Circular search button */
-    padding: 8px;
-    margin-right: 15px;
-}
 
-.search-btn:hover {
-    background-color: #d6d6c9; /* Slightly darker on hover */
-}
-
-/* Form container styles */
 .form-container {
-    max-width: 400px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; 
+    margin: 2rem auto; 
+    padding: 1.5rem; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-color: #FFF9E6; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
+
 
 .form-title {
-    text-align: center;
-    color: #4B4B4B;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
+    text-align: center; 
+    color: #5D3A3A; 
+    font-family: "Montserrat", sans-serif; 
+    font-weight: bold; 
+    font-size: 1.5rem; 
+    margin-bottom: 1rem; 
 }
+
 
 .form-element {
-    margin-bottom: 1rem;
-    font-family: "Montserrat", sans-serif;
+    margin-bottom: 1rem; 
+    font-family: "Montserrat", sans-serif; 
 }
+
 
 .form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    font-family: "Montserrat", sans-serif;
+    display: block; 
+    margin-bottom: 0.5rem; 
+    font-weight: bold; 
+    color: #4B4B4B; 
 }
+
 
 .form-input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    width: 100%; 
+    padding: 0.5rem; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 1rem; 
+    transition: border-color 0.3s ease; 
 }
+
 
 .form-input:focus {
-    border-color: #EEE8AA; /* Focus border color */
-    outline: none;
+    border-color: #F1C40F; 
+    outline: none; 
 }
+
 
 .form-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #556B2F;
-    color: #4B4B4B;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
+    width: 100%; 
+    padding: 10px; 
+    background-color: #708D23; 
+    color: #FFF9E6; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 1rem; 
+    font-family: "Montserrat", sans-serif; 
+    transition: background-color 0.3s ease; 
 }
 
+
 .form-button:hover {
-    background-color: #EEE8AA;
+    background-color: #C95A00; 
+}
+
+
+.error-message {
+    color: #C0392B; 
+    font-weight: bold; 
+    margin-top: 0.5rem; 
+    text-align: center; 
+}
+
+.dropdown-menu {
+    background-color: #D35400; 
+    border-radius: 5px; 
+    z-index: 1000; 
+    display: block !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.dropdown-item:hover {
+    background-color:#4B4B4B;
+  }
+
+.dropdown-button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:focus,
+.btn-primary :active {
+    color: #D35400; 
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+    outline: none; 
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: #ffffff;
+  }
+  
+  
+  .dropdown-menu .dropdown-divider {
+    height: 1px;
+    background-color: #e9ecef;
+    margin: 0;
+  }
+  
+  
+  .dropdown-toggle::after {
+    margin-left: 8px;
+  }
+
+  .dropdown-button:before{
+    transition: .3s all ease-in-out !important;
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important; 
+    height: 5px !important;
+    background-color: transparent !important;
+    border-radius: 4px !important;
+}
+
+.dropdown-button:before{
+  background-color: #D35400 !important;
+}
+
+.btn-primary :hover {
+    color: #D35400 !important; 
+}
+
+.btn-primary .active {
+    color: #D35400 !important; 
+    font-weight: bold !important;
+}
+
+.btn-primary-active.active {
+    color:#4B4B4B !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 16px !important; 
+}
+
+.btn-primary .active::after {
+    transition: .3s all ease-in-out !important;
+    content: "" !important;
+    position: absolute !important;
+    left:0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 5px !important;
+    border-radius: 4px !important;
+    background-color: #D35400 !important; 
 }

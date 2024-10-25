@@ -69,7 +69,7 @@
   </div>
 
   <!-- Edit, Save, and Cancel Buttons -->
-  <button *ngIf="!isEditMode" (click)="editRecipe()">Edit</button>
-  <button *ngIf="isEditMode" (click)="updateRecipe()">Save</button>
-  <button *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
+  <button class = "btn btn-outline-secondary" *ngIf="!isEditMode" (click)="editRecipe()">Edit</button>
+  <button class = "btn btn-outline-secondary" *ngIf="isEditMode" (click)="updateRecipe()">Save</button>
+  <button class = "btn btn-outline-secondary" *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
 </div>

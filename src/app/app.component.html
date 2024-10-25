@@ -14,7 +14,16 @@
         <a class="nav-link" [routerLinkActive]="['router-active', 'active']" [routerLink]="['recipe']">Add Recipe</a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn">
-        <a class="nav-link" [routerLinkActive]="['router-active', 'active']" [routerLink]="['recipe']">Add Recipe</a>
+        <a class="nav-link" [routerLinkActive]="['router-active', 'active']" [routerLink]="['/users', currentUserId]"> My Profile</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="isAdmin">
+        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" [attr.aria-expanded]="dropdownOpen ? 'true' : 'false'" (click)="dropdownOpen = !dropdownOpen">
+          Admin
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="adminDropdown"*ngIf="dropdownOpen">
+          <li><a class="dropdown-item" [routerLink]="['/userList']" (click)="this.dropdownOpen = false">Manage Users</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/recipeList']" (click)="this.dropdownOpen = false">Manage Recipes</a></li>
+        </ul>
       </li>
     </ul>
     

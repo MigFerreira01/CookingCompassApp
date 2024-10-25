@@ -1,0 +1,89 @@
+
+.login-container {
+    width: 100%;
+    max-width: 400px; 
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: #FFF9E6; 
+    border-radius: 10px; 
+    font-family: 'Montserrat', sans-serif; 
+  }
+  
+  
+  .login-title {
+    text-align: center; 
+    font-size: 28px; 
+    margin-bottom: 20px; 
+    font-weight: 600; 
+    color: #5D3A3A; 
+  }
+  
+  
+  .form-element {
+    margin-bottom: 1rem; 
+  }
+  
+  
+  .form-label {
+    display: block; 
+    font-size: 14px; 
+    font-weight: bold; 
+    color: #4B4B4B; 
+    margin-bottom: 8px; 
+  }
+  
+  
+  .form-input {
+    width: 100%; 
+    padding: 12px; 
+    margin: 8px 0 16px 0; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  
+  
+  .form-input:focus {
+    border-color: #F1C40F; 
+    outline: none;
+    box-shadow: 0 0 5px rgba(241, 196, 15, 0.3); 
+  }
+  
+  
+  .error-message {
+    color: #C0392B; 
+    font-size: 12px; 
+    margin-top: -10px; 
+    margin-bottom: 15px; 
+  }
+  
+  
+  .form-button {
+    width: 100%; 
+    padding: 12px; 
+    background-color: #708D23; 
+    color: #FFF9E6; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  
+  .form-button:hover {
+    background-color: #D35400; 
+  }
+  
+  
+  @media (max-width: 600px) {
+    .login-container {
+      margin: 20px; 
+      padding: 15px; 
+    }
+  }
+  
